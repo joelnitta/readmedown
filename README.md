@@ -86,6 +86,14 @@ readme_rmd <- system.file(
   "extdata", "ReadmeTemplate.Rmd", package = "readmedown", mustWork = TRUE)
 rmarkdown::render(readme_rmd)
 #> processing file: ReadmeTemplate.Rmd
+#> Rows: 344 Columns: 8
+#> ── Column specification ────────────────────────────────────────────────────────
+#> Delimiter: ","
+#> chr (3): species, island, sex
+#> dbl (5): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, year
+#> 
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 #> output file: ReadmeTemplate.knit.md
 #> /usr/local/bin/pandoc +RTS -K512m -RTS ReadmeTemplate.knit.md --to plain --from markdown+autolink_bare_uris+tex_math_single_backslash --output ReadmeTemplate.txt --wrap auto --columns 72
 #> 
