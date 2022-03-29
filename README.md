@@ -18,24 +18,27 @@ You can install the development version of `readmedown` like so:
 remotes::install_github("joelnitta/readmedown")
 ```
 
-## Usage
+## Motivation
 
 Data README files are very important sources of metadata that describe
 how other people can use the data you have made available in a
 repository (such as [FigShare](https://figshare.com/) or
 [Dryad](https://datadryad.org/stash)).
 
-Best practices for data README files are to include as much information
-as possible about the format of each included data file. This can be
+[Best practices for data README
+files](https://datadryad.org/stash/faq#metadata) are to include as much
+information as possible about the format of each data file. This can be
 tedious to track manually. By using
 [Rmarkdown](https://bookdown.org/yihui/rmarkdown/), one can insert
 summary statistics, names of variables, etc., directly into the output
 document. This ensures your README files are accurate and saves time
 if/when your data changes!
 
-For example, the `desc_data()` helps describe dataframes. It throws an
-error if you description of the data is wrong, thereby ensuring that the
-README is accurate:
+## Usage
+
+For example, the `desc_data()` function helps describe dataframes. It
+throws an error if your description of the data is wrong, thereby
+ensuring that the README is accurate:
 
 ``` r
 library(readmedown)
@@ -58,7 +61,7 @@ desc_data(
 
 By using the `results = "asis"` [chunk
 option](https://yihui.org/knitr/options/), we can print the results of
-`desc_data()` directly into the rendered output. For example, you
+`desc_data()` directly into the rendered output. For example, you could
 produce the section below in a README file:
 
 mtcars_small: A dataframe including 10 rows and 3 columns.
