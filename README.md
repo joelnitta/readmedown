@@ -26,9 +26,9 @@ repository (such as [FigShare](https://figshare.com/) or
 [Dryad](https://datadryad.org/stash)).
 
 [Best practices for data README
-files](https://datadryad.org/stash/faq#metadata) are to include as much
-information as possible about the format of each data file. This can be
-tedious to track manually. By using
+files](https://data.research.cornell.edu/content/readme) are to include
+as much information as possible about the format of each data file. This
+can be tedious to track manually. By using
 [Rmarkdown](https://bookdown.org/yihui/rmarkdown/), one can insert
 summary statistics, names of variables, etc., directly into the output
 document. This ensures your README files are accurate and saves time
@@ -69,6 +69,28 @@ mtcars_small: A dataframe including 10 rows and 3 columns.
 -   mpg: Miles per gallon
 -   cyl: Number of cylinders
 -   disp: Displacement
+
+## Template README file
+
+This package includes a [template Rmd README
+file](inst/extdata/ReadmeTemplate.Rmd) based on this [awesome template
+by the Cornell Research Data Management Service
+Group](https://data.research.cornell.edu/content/readme).
+
+I recommend using this template Rmd as a starting point for writing your
+data README file. It can be rendered to plain text using
+`plain_document()` provided by this package.
+
+``` r
+readme_rmd <- system.file(
+  "extdata", "ReadmeTemplate.Rmd", package = "readmedown", mustWork = TRUE)
+rmarkdown::render(readme_rmd)
+#> processing file: ReadmeTemplate.Rmd
+#> output file: ReadmeTemplate.knit.md
+#> /usr/local/bin/pandoc +RTS -K512m -RTS ReadmeTemplate.knit.md --to plain --from markdown+autolink_bare_uris+tex_math_single_backslash --output ReadmeTemplate.txt --wrap auto --columns 72
+#> 
+#> Output created: ReadmeTemplate.txt
+```
 
 ## License
 
