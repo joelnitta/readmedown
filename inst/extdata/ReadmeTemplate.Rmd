@@ -107,33 +107,60 @@ DATA-SPECIFIC INFORMATION
 
 <repeat this section for each dataset, folder or file, as appropriate>
 
-```{r example-data}
-# Here are some example data: a small version of the 'mtcars' dataset
-cars_small <- mtcars[1:10, 1:3]
+```{r example-data, echo = FALSE, message = FALSE}
+# Specify path to data file
+penguins_file <- system.file(
+  "extdata", "penguins.csv", package = "readmedown", mustWork = TRUE)
+# Load data
+penguins <- readr::read_csv(penguins_file)
 ```
 
-mtcars_small.csv
+`r fs::path_file(penguins_file)`: Palmer penguins.
 
-Number of variables: `r ncol(cars_small)`
+Number of variables: `r ncol(penguins)`
 
-Number of cases/rows: `r nrow(cars_small)`
+Number of cases/rows: `r nrow(penguins)`
 
 Variable List:
 <list variable name(s), description(s), unit(s)and value labels as appropriate for each>
 
 ```{r example-var-list, results = "asis", echo = FALSE}
 # Let's describe these data with user-provided metadata
+penguins |>
 desc_data(
-    cars_small,
-    data.frame(
-      col = c("mpg", "cyl", "disp"),
-      desc = c("Miles per gallon", "Number of cylinders", "Displacement")
+    tibble::tribble(
+      ~col, ~desc,
+      "species", "Species",
+      "island", "Island",
+      "bill_length_mm", "Bill length (mm)",
+      "bill_depth_mm", "Bill depth (mm)",
+      "flipper_length_mm", "Flipper length (mm)",
+      "body_mass_g", "Body mass (g)",
+      "sex", "Sex",
+      "year", "Year"
     )
   )
 ```
 
 
-Missing data codes:
-<list code/symbol and definition>n
+Missing data codes: missing data coded as 'NA'
 
-Specialized formats or other abbreviations used:
+Specialized formats or other abbreviations used: None
+
+MD5 checksum: `r tools::md5sum(penguins_file)`
+
+--------------------------
+
+Next data file...
+
+--------------------------
+
+CHANGE LOG
+
+On some date: Created this README file
+
+--------------------------
+
+REFERENCES
+
+<if you have any; these can be generated with pandoc citation keys and a bib file>
