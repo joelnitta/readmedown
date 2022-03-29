@@ -1,2 +1,5 @@
 ^readmedown\.Rproj$
 ^\.Rproj\.user$
+^\.Rprofile$
+^\.Rhistory$
+^LICENSE\.md$
