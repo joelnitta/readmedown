@@ -63,7 +63,8 @@ plain_document <- function(wrap = "auto", columns = 72) {
       args = c(
         "--wrap", wrap,
         "--columns", columns
-      )),
+      ),
+      ext = ".txt"),
     clean_supporting = TRUE
   )
 }
