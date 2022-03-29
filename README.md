@@ -50,7 +50,7 @@ cars_small <- mtcars[1:10, 1:3]
 desc_data(
     cars_small,
     data.frame(
-      col_names = c("mpg", "cyl", "disp"),
+      col = c("mpg", "cyl", "disp"),
       desc = c("Miles per gallon", "Number of cylinders", "Displacement")
     )
   )

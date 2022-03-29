@@ -11,11 +11,11 @@ desc_data(data, metadata, bullet = "-", dbl_space = FALSE)
 
 \item{metadata}{Dataframe with two columns:
 \itemize{
-\item "col_names" (column names in \code{data})
+\item "col" (column names in \code{data})
 \item "desc" (description of each column).
 }
 
-"col_names" must match column names in \code{data} exactly (including order)}
+"col" must match column names in \code{data} exactly (including order)}
 
 \item{bullet}{Character vector of length 1; type of bullet to print before
 each line of output. May choose from '-', '*', or 'none'.}
@@ -33,7 +33,7 @@ README file.
 \examples{
 cars_small <- mtcars[1:10, 1:3]
 cars_metadata <- data.frame(
-  col_names = c("mpg", "cyl", "disp"),
+  col = c("mpg", "cyl", "disp"),
   desc = c("Miles per gallon", "Number of cylinders", "Displacement")
 )
 desc_data(cars_small, cars_metadata)
