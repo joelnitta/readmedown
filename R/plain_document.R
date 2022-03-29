@@ -33,7 +33,7 @@
 #' txt_tempfile <- tempfile(fileext = ".txt")
 #' rmarkdown::render(
 #'   rmd_tempfile, output_file = txt_tempfile,
-#'   output_format = plain_document(columns = 40))
+#'   output_format = plain_document())
 #'
 #' # Check output
 #' readLines(txt_tempfile)
