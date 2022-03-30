@@ -17,7 +17,6 @@ test_that("errors thrown on bad input", {
   )
 })
 
-
 test_that("column argument works", {
   rmd_tempfile <- tempfile(fileext = ".Rmd")
   lines <- c(
@@ -62,5 +61,51 @@ test_that("column argument works", {
 
  unlink(rmd_tempfile)
  unlink(txt_tempfile)
+
+})
+
+test_that("citing works", {
+  temp_dir <- tempdir()
+
+  rmd_tempfile <- paste0(temp_dir, "/temp.Rmd")
+  lines <- c(
+    "---",
+    "title: 'Report'",
+    "output_format: plain_document",
+    "bibliography: temp.bib",
+    "---",
+    "Accoring to @me2022",
+    "",
+    "References"
+  )
+  write(lines, rmd_tempfile)
+
+  bib_tempfile <- paste0(temp_dir, "/temp.bib")
+  lines <- c(
+    "@misc{me2022,",
+    "  author = {Nitta, Joel H},",
+    "  title = {My wonderful publication},",
+    "  year = {2022}",
+    "}"
+  )
+  write(lines, bib_tempfile)
+
+  # Render to temporary text file
+  txt_tempfile <- paste0(temp_dir, "/temp.txt")
+
+  rmarkdown::render(
+    rmd_tempfile, output_file = txt_tempfile,
+    output_format = plain_document())
+
+  results <- readLines(txt_tempfile)
+
+  expect_equal(
+    results[[1]],
+    "Accoring to Nitta (2022)"
+  )
+
+  unlink(rmd_tempfile)
+  unlink(bib_tempfile)
+  unlink(txt_tempfile)
 
 })

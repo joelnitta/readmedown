@@ -62,7 +62,8 @@ plain_document <- function(wrap = "auto", columns = 72) {
       to = "plain",
       args = c(
         "--wrap", wrap,
-        "--columns", columns
+        "--columns", columns,
+        "--citeproc"
       ),
       ext = ".txt"),
     clean_supporting = TRUE
